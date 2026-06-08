@@ -1,0 +1,224 @@
+# OK Skills: Codex, Claude Code, Cursor, OpenClaw और अन्य टूल्स के लिए AI Coding Agent Skills
+
+[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Tiếng Việt](README.vi.md) | [Русский](README.ru.md) | हिन्दी
+
+[![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
+
+Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
+
+इस repo में अभी **41 reusable skills** शामिल हैं: **33 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है।
+
+अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
+
+**लोकप्रिय उपयोग परिदृश्य:** docs lookup, browser automation, GitHub Actions debugging, prompt engineering, planning workflows, frontend design, और PDF / Word / PPTX / XLSX authoring.
+
+## यह Repo किनके लिए है
+
+- आप Codex, Claude Code, Cursor, OpenClaw, Trae या किसी अन्य AI coding agent का उपयोग करते हैं और ad-hoc prompts की जगह reusable skills चाहते हैं।
+- आप `CLAUDE.md` / `AGENTS.md` / `SKILL.md` workflows maintain करते हैं और ऐसी portable instructions चाहते हैं जो कई projects में काम करें।
+- आपको docs lookup, browser automation, GitHub workflow, planning, prompt engineering, frontend design, PDFs, Office documents, slide decks और spreadsheets के लिए battle-tested skills चाहिए।
+
+## शुरुआत यहां से करें
+
+अगर आप शुरुआत में केवल कुछ skills install करना चाहते हैं, तो इनसे शुरू करें:
+
+- [planning-with-files](planning-with-files/SKILL.md): complex tasks, research, और long-running work के लिए file-based planning.
+- [find-docs](find-docs/SKILL.md): current library docs, API references, और Context7-backed examples fetch करने के लिए।
+- [agent-browser](agent-browser/SKILL.md): screenshots, forms, scraping, और web QA के लिए browser automation.
+- [gh-fix-ci](gh-fix-ci/SKILL.md): failing GitHub Actions checks inspect करके logs को fix plan में बदलता है।
+
+## 1-मिनट Quick Start
+
+```bash
+mkdir -p ~/.agents/skills
+cd ~/.agents/skills
+git clone https://github.com/mxyhi/ok-skills.git ok-skills
+```
+
+Clone करने के बाद repo `~/.agents/skills/ok-skills` पर रहेगा, और अंदर की directories पहले से अपेक्षित layout का पालन करती हैं:
+
+```text
+~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
+  planning-with-files/
+    SKILL.md
+  find-docs/
+    SKILL.md
+  agent-browser/
+    SKILL.md
+  ...
+```
+
+Claude Code या Codex की global instructions के लिए [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) से शुरू करें, फिर इसे Claude Code के `CLAUDE.md` या Codex के `AGENTS.md` में copy या merge करें। इसमें Chinese-first, KISS-oriented workflow, latest docs/source checks, multi-agent preference, default `caveman` / `planning-with-files` / `karpathy-guidelines`, strict TypeScript expectations और context-mode routing rules शामिल हैं। Reuse करने से पहले `语言要求` section को अपने project के लिए edit करें। `其他注意项` section intentionally project-local है और जरूरत के अनुसार edit किया जा सकता है।
+
+अपने `AGENTS.md` में simple trigger rules जोड़ें, या वही skill triggers `CLAUDE.md` / `AGENTS.md` में merge करें:
+
+```md
+## Skills
+
+- planning-with-files: Use for complex tasks, research, or anything that will take 5+ tool calls.
+- find-docs: Use when you need current library docs, API references, or Context7-backed examples.
+- agent-browser: Use for browser automation, screenshots, scraping, web testing, or form filling.
+```
+
+फिर इसे natural language में trigger करें:
+
+- `Use planning-with-files before refactoring this module.`
+- `Use find-docs to fetch the latest docs for this SDK.`
+- `Use agent-browser to reproduce this UI bug.`
+
+## उपयोग-परिदृश्य के अनुसार Skills ब्राउज़ करें
+
+### Research & Docs
+
+- [find-docs](find-docs/SKILL.md): current docs lookup के लिए focused Context7 CLI workflow.
+- [exa-search](exa-search/SKILL.md): Exa search tools के साथ web, code, और company research.
+- [get-api-docs](get-api-docs/SKILL.md): coding शुरू करने से पहले current third-party API और SDK documentation fetch करें।
+- [find-skills](find-skills/SKILL.md): जब user किसी capability की मांग करे, तब existing skills खोजें।
+
+### Planning & Prompting
+
+- [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, और `progress.md` के साथ persistent markdown planning.
+- [autoresearch](autoresearch/SKILL.md): clear goals, metrics, verify loops, और keep/discard gates के साथ autonomous goal-directed iteration.
+- [diagnose](diagnose/SKILL.md): कठिन bugs और performance regressions के लिए disciplined diagnosis loop.
+- [grill-me](grill-me/SKILL.md): plan या design को एक-एक सवाल से stress-test करके shared understanding तक पहुंचना.
+- [grill-with-docs](grill-with-docs/SKILL.md): plan को domain language, `CONTEXT.md`, और ADRs के खिलाफ जांचते हुए docs inline update करना.
+- [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।
+- [karpathy-guidelines](karpathy-guidelines/SKILL.md): overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।
+- [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): tests में `as` type assertions को `@total-typescript/shoehorn` में migrate करें।
+- [tdd](tdd/SKILL.md): feature, bugfix, refactor, या behavior change से पहले test-first red-green-refactor लागू करता है।
+- [systematic-debugging](systematic-debugging/SKILL.md): bug, test failure, ya unexpected behavior में fix propose करने से पहले root cause को systematically जांचें।
+
+### GitHub Workflow
+
+- [gh-address-comments](gh-address-comments/SKILL.md): `gh` के साथ current PR पर review और issue comments address करें।
+- [gh-fix-ci](gh-fix-ci/SKILL.md): failing GitHub Actions checks inspect करें, logs summarize करें, और fixes plan करें।
+
+### Automation & QA
+
+- [agent-browser](agent-browser/SKILL.md): navigation, forms, screenshots, और scraping के लिए browser automation.
+- [kimi-webbridge](kimi-webbridge/SKILL.md): local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।
+- [browser-trace](browser-trace/SKILL.md): browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।
+- [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
+- [dogfood](dogfood/SKILL.md): reproducible evidence के साथ structured exploratory testing.
+- [electron](electron/SKILL.md): Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।
+
+`dogfood/` और `electron/` अभी भी `vercel-labs/agent-browser` से vendored हैं, लेकिन upstream ने commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` में इन्हें `skills/` से `skill-data/` में move किया ताकि installer discovery केवल bootstrap skill `agent-browser` को expose करे। यह repo इन specialized skills को top-level directories के रूप में बनाए रखता है क्योंकि upstream अभी भी इन्हें maintain करता है और ये सीधे उपयोगी हैं।
+
+
+### Frontend & Design
+
+- [ai-elements](ai-elements/SKILL.md): `ai-elements` library के लिए AI chat UI components बनाएं।
+- [frontend-skill](frontend-skill/SKILL.md): जब आपको दृश्य रूप से मजबूत landing page, website, app, prototype, demo या game UI चाहिए तब उपयोग करें।
+- [huashu-design](huashu-design/SKILL.md): high-fidelity HTML prototypes, interactive demos, slide decks, motion design, variants, video exports, aur design critiques banayein.
+- [shader-dev](shader-dev/SKILL.md): ShaderToy-compatible real-time visuals ke liye comprehensive GLSL shader techniques.
+- [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
+- [`gsap-skills/`](gsap-skills/): core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks सहित 8 official GSAP animation skills.
+
+### Utilities & Authoring
+
+- [minimax-docx](minimax-docx/SKILL.md): OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting.
+- [minimax-pdf](minimax-pdf/SKILL.md): token-based design system ke saath PDF documents generate, fill, aur reformat karein.
+- [pptx-generator](pptx-generator/SKILL.md): PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein.
+- [huashu-design](huashu-design/SKILL.md): HTML decks, editable PPTX, MP4/GIF motion pieces, aur narrated design videos banayein.
+- [minimax-xlsx](minimax-xlsx/SKILL.md): low-loss XML workflow ke saath Excel/spreadsheet files open, create, read, analyze, edit, aur validate karein.
+
+## Vendored Skill Packs
+
+[`gsap-skills/`](gsap-skills/) में [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) से लिया गया animation-focused vendored bundle शामिल है, commit `aed9cfd3277740755f6bfc1155c7aa645403b760` पर आधारित।
+
+इसमें शामिल हैं:
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) और [`gsap-skills/LICENSE`](gsap-skills/LICENSE) में सुरक्षित रखे गए हैं।
+
+[`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files) है। यह repository local skill के लिए उसी upstream directory को canonical baseline मानती है। Local differences सिर्फ public skill name `planning-with-files` रखने और `skills-ref` compatibility के लिए `SKILL.md` frontmatter normalize करने तक सीमित हैं।
+
+## सामान्य prerequisites
+
+- कुछ skills मानकर चलती हैं कि `gh` installed और authenticated है।
+- Browser-focused skills के लिए Chrome/CDP-capable environment की आवश्यकता हो सकती है।
+- Third-party doc lookup skills external CLIs या MCP tools पर निर्भर हो सकती हैं; विवरण के लिए संबंधित `SKILL.md` देखें।
+
+## पूरा Skill Index
+
+`Source URL` उस skill के canonical upstream को point करता है जब skill vendored/imported हो; अन्यथा यह इस repository के skill directory को point करता है।
+
+### Top-Level Skills
+
+| Skill                                                               | विवरण                                                                                                                                                                                        | Source URL                                                                                                                     |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [agent-browser](agent-browser/SKILL.md)                             | AI agents के लिए browser automation CLI: navigation, form filling, screenshots, extraction, और web testing.                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [ai-elements](ai-elements/SKILL.md)                                 | composable patterns और shadcn/ui conventions के साथ ai-elements library के लिए नए AI chat interface components बनाएं।                                                                        | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
+| [autoresearch](autoresearch/SKILL.md)                               | Modify, verify, keep/discard, aur repeat workflows ke liye autonomous goal-directed iteration engine.                                                                                      | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
+| [better-icons](better-icons/SKILL.md)                               | CLI या MCP tools के जरिए 200+ Iconify libraries खोजें और SVG icons प्राप्त करें।                                                                                                             | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [kimi-webbridge](kimi-webbridge/SKILL.md)                           | local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।                                                       | [install.sh](https://kimi-web-img.moonshot.cn/webbridge/install.sh)                                                             |
+| [browser-trace](browser-trace/SKILL.md)                             | browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।                                                                                  | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
+| [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode jo caveman style me bolkar response tokens kam karta hai aur technical accuracy banaye rakhta hai.                                                       | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
+| [diagnose](diagnose/SKILL.md)                                   | कठिन bugs और performance regressions के लिए disciplined diagnosis loop.                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose)                                |
+| [find-docs](find-docs/SKILL.md)                                     | current documentation, API references, और code examples के लिए Context7 CLI का उपयोग करें।                                                                                                   | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
+| [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
+| [exa-search](exa-search/SKILL.md)                                   | web, code, और company research के लिए Exa का उपयोग करें।                                                                                                                                     | Custom                                                                                                                         |
+| [find-skills](find-skills/SKILL.md)                                 | जब users को specialized capabilities चाहिए हों, तब existing skills खोजें।                                                                                                                    | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
+| [frontend-skill](frontend-skill/SKILL.md)                           | दृश्य रूप से मजबूत landing page, website, app, prototype, demo या game UI बनाएं।                                                                                                             | [ok-skills/frontend-skill](frontend-skill/SKILL.md)                                                                            |
+| [huashu-design](huashu-design/SKILL.md)                           | High-fidelity HTML prototypes, interactive demos, slide decks, motion design, variants, video exports, aur design critiques banayein.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [shader-dev](shader-dev/SKILL.md) | ShaderToy-compatible real-time visuals ke liye comprehensive GLSL shader techniques. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
+| [get-api-docs](get-api-docs/SKILL.md)                               | code लिखने से पहले current third-party API या SDK docs fetch करें।                                                                                                                           | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
+| [gh-address-comments](gh-address-comments/SKILL.md)                 | current branch पर PR review और issue comments को `gh` के साथ address करें।                                                                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
+| [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | failing GitHub Actions checks inspect करें, logs pull करें, और fixes plan करें।                                                                                                              | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
+| [grill-me](grill-me/SKILL.md)                                 | plan या design पर लगातार सवाल कर shared understanding तक पहुंचना.                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
+| [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language, `CONTEXT.md`, और ADRs के against plan को stress-test करके docs inline update करना.                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
+| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
+| [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files को `as` type assertions से `@total-typescript/shoehorn` में migrate करें।                                                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
+| [opensrc](opensrc/SKILL.md)                                         | Dependency source code fetch karke AI agents ko deeper implementation context dena.                                                                                                          | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
+| [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | screenshots और videos के साथ reproducible issue reports तैयार करने के लिए web apps का systematic परीक्षण करें।                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | agent-browser और Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।                                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
+| [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
+| [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
+| [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
+| [tdd](tdd/SKILL.md)                                                 | किसी भी feature, bugfix, refactor, या behavior change से पहले उपयोग करें; public interface integration-style tests को प्राथमिकता देता है।                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [systematic-debugging](systematic-debugging/SKILL.md)             | किसी भी bug, test failure, या unexpected behavior में fix propose करने से पहले उपयोग करें।                                                  | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
+| [minimax-xlsx](minimax-xlsx/SKILL.md) | Low-loss XML workflow ke saath Excel/spreadsheet files open, create, read, analyze, edit, aur validate karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
+
+नोट्स:
+- `dogfood` और `electron` का upstream path `skill-data/` में है, `skills/` में नहीं।
+- upstream ने commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` में इन specialized skills को move किया ताकि installer discovery सिर्फ bootstrap skill `agent-browser` को पाए।
+- यह repo इन्हें जानबूझकर top-level vendored skills के रूप में रखता है क्योंकि upstream अभी भी इन्हें maintain करता है और ये सीधे उपयोगी हैं।
+
+### Vendored `gsap-skills/` Skills
+
+| Skill                                                         | विवरण                                                                                           | Source URL                                                                                            |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md)                   | Core API: `gsap.to()` / `from()` / `fromTo()`, easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core)          |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md)           | Timelines: sequencing, position parameter, labels, nesting, playback.                           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline)      |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: scroll-linked animation, pinning, scrub, triggers, refresh, cleanup.             | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md)             | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase, और अधिक.                      | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins)       |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md)                 | gsap.utils helpers: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe.              | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils)         |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md)                 | React: useGSAP, refs, `gsap.context()`, cleanup, SSR.                                           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react)         |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md)     | Performance tips: transforms, will-change, batching, ScrollTrigger tips.                        | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance)   |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md)       | Vue, Svelte, और अन्य frameworks: lifecycle, selector scoping, unmount cleanup.                  | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks)    |
+
+## Contributing
+
+नई skills या existing skills में improvements के लिए contributions का स्वागत है।
+
+1. Trigger conditions स्पष्ट और testable रखें।
+2. Examples concise और execution-oriented रखें।
+3. अगर कोई skill external tools पर निर्भर है, तो उस dependency को `SKILL.md` में document करें।
+4. जब आप किसी skill को add या rename करें, तो `README.md` और `README.zh-CN.md` अपडेट करें, और public-facing skill index बदलने पर बाकी translated READMEs भी refresh करें।
+
+## License
+
+यह repository [LICENSE](LICENSE) के अंतर्गत licensed है।
+
+कुछ skills में skill-specific assets और attribution के लिए अतिरिक्त license files या notices शामिल हैं, जिनमें [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`huashu-design/`](huashu-design/), [`minimax-docx/`](minimax-docx/), और [`gsap-skills/`](gsap-skills/) शामिल हैं।
