@@ -3,6 +3,29 @@
 Local snapshots of useful skills and playbooks for Codex, Claude Code, Cursor,
 OpenCode, and other `SKILL.md`-compatible agents.
 
+## Universal Agent Rules
+
+The [`agent-rules`](agent-rules) directory contains a set of universal behavioral guidelines configured to work seamlessly across multiple AI agents (Cursor, Copilot, Windsurf, Claude Code, Gemini, RooCode, etc.). The core instructions are defined in `AI_RULES.md` and are symlinked to all the default configuration file names these tools expect.
+
+To initialize these rules in any of your own projects, run the following command in your project's root directory:
+
+```bash
+# Clone the repository sparsely to just grab the agent-rules folder
+git clone --depth 1 --filter=blob:none --sparse https://github.com/nehal119/skills.git /tmp/skills
+git -C /tmp/skills sparse-checkout set agent-rules
+
+# Copy all rules and symlinks into your project root
+cp -a /tmp/skills/agent-rules/. ./
+
+# Clean up
+rm -rf /tmp/skills
+```
+
+Alternatively, to download a configuration file for a specific agent (e.g., Cursor), you can just download it directly via curl (this will fetch the raw file contents):
+```bash
+curl -o .cursorrules https://raw.githubusercontent.com/nehal119/skills/main/agent-rules/.cursorrules
+```
+
 ## Collections
 
 - [`collections/ok-skills`](collections/ok-skills/README.md): 47 practical
