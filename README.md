@@ -5,7 +5,7 @@ OpenCode, and other `SKILL.md`-compatible agents.
 
 ## Universal Agent Rules
 
-The [`agent-rules`](agent-rules) directory contains a set of universal behavioral guidelines configured to work seamlessly across multiple AI agents (Cursor, Copilot, Windsurf, Claude Code, Gemini, RooCode, etc.). The core instructions are defined in `AI_RULES.md` and are symlinked to all the default configuration file names these tools expect.
+The [`agent-rules`](agent-rules) directory contains a set of universal behavioral guidelines configured to work seamlessly across multiple AI agents (Cursor, Copilot, Windsurf, Claude Code, Gemini, RooCode, etc.). The core instructions are defined in `AI_RULES.md` and are duplicated across the default configuration file names these tools expect.
 
 To initialize these rules in any of your own projects, run the following command in your project's root directory:
 
@@ -14,7 +14,7 @@ To initialize these rules in any of your own projects, run the following command
 git clone --depth 1 --filter=blob:none --sparse https://github.com/nehal119/skills.git /tmp/skills
 git -C /tmp/skills sparse-checkout set agent-rules
 
-# Copy all rules and symlinks into your project root
+# Copy all rule files into your project root
 cp -a /tmp/skills/agent-rules/. ./
 
 # Clean up
@@ -25,6 +25,25 @@ Alternatively, to download a configuration file for a specific agent (e.g., Curs
 ```bash
 curl -o .cursorrules https://raw.githubusercontent.com/nehal119/skills/main/agent-rules/.cursorrules
 ```
+
+### Supported Agents & Configurations
+
+The `agent-rules` folder contains the following files mapped to specific AI tools:
+
+| Configuration File | Supported Agents & Integrations |
+| :--- | :--- |
+| `AI_RULES.md` | Base rule file (fallback for generic tooling). |
+| `.cursorrules` / `CURSOR.md` | **Cursor IDE** and its internal AI integrations. |
+| `.windsurfrules` | **Windsurf IDE** (by Codeium). |
+| `AGENTS.md` | **Antigravity IDE** and generic Gemini-based agents. |
+| `CLAUDE.md` | **Claude Code CLI** and Anthropic VS Code extensions. |
+| `.clinerules` | **Cline** VS Code extension. |
+| `.roorules` | **RooCode** VS Code extension. |
+| `CODEX.md` | **Codex** CLI and Codex VS Code extension. |
+| `COPILOT.md` | **GitHub Copilot** and Copilot Chat. |
+| `GEMINI.md` | **Gemini** web interfaces, CLI agents, and specific VS Code extensions. |
+| `CHATGPT.md` | **ChatGPT** project settings and custom GPT setups. |
+| `CONVENTIONS.md` | Standard fallback conventions for universal **CLI agents** (like Aider) and other generic extensions. |
 
 ## Collections
 
