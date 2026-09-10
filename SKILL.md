@@ -77,9 +77,11 @@ Before writing or editing code:
 - If requirements are unclear, stop immediately: identify the exact blocker and ask.
 
 *Pattern:*
+```
 Assumption: Using existing PostgreSQL pool; no new connection pool needed.
 Tradeoff: Synchronous call blocks worker; async queue adds external dependency. Recommend async.
 Proceed?
+```
 
 ### 2. Simplicity First
 **Minimum code that solves the problem. Nothing speculative.**
